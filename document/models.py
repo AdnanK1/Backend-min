@@ -1,4 +1,3 @@
-from ast import Slice
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.utils.text import slugify
@@ -61,8 +60,6 @@ class Document(models.Model):
     date = models.DateField()
     author = models.CharField(max_length=255)
     heading = models.CharField(max_length=255)
-    images = models.ImageField(
-        upload_to='image/%Y/%m/%d/', default="image", blank=True, null=True)
     story = models.TextField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -106,3 +103,7 @@ def document_post_save(sender, instance, created, *args, **kwargs):
 
 post_save.connect(document_post_save, sender=Document)
 
+class Images(models.Model):
+    document = models.ForeignKey(Document, on_delete=models.CASCADE, related_name='document')
+    images = models.ImageField(
+        upload_to='image/%Y/%m/%d/', default="image", blank=True, null=True)

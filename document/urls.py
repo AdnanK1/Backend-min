@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.DocumentDetailsGenericAPIView.as_view()),
+    path('', views.DocumentGenericAPIView.as_view()),
     path('<slug:slug>',views.DocumentDetailsGenericAPIView.as_view()),
    
 ]

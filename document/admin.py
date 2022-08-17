@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Document
+from .models import Document,Images
 
 # Register your models here.
 class DocumentAdmin(admin.ModelAdmin):
@@ -7,3 +7,4 @@ class DocumentAdmin(admin.ModelAdmin):
     search_fields = ['catch_word','date','station']
 
 admin.site.register(Document,DocumentAdmin)
+admin.site.register(Images)

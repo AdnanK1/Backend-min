@@ -11,6 +11,7 @@ class DocumentGenericAPIView(generics.ListCreateAPIView):
     parser_classes = [MultiPartParser,FormParser]
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
+   
 
 class DocumentDetailsGenericAPIView(generics.RetrieveUpdateDestroyAPIView):
     parser_classes = [MultiPartParser,FormParser]
